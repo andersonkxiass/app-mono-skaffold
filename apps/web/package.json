@@ -5,9 +5,11 @@
 	"scripts": {
 		"dev": "next dev --turbopack --port=3001",
 		"build": "next build",
-		"start": "next start"
+		"start": "next start",
+		"check-types": "tsc --noEmit"
 	},
 	"dependencies": {
+		"@awesome-app/orpc-contract": "workspace:*",
 		"radix-ui": "^1.4.2",
 		"@tanstack/react-form": "^1.12.3",
 		"class-variance-authority": "^0.7.1",
@@ -21,10 +23,14 @@
 		"tailwind-merge": "^3.3.1",
 		"tw-animate-css": "^1.3.4",
 		"zod": "^4.0.2",
-		"@orpc/tanstack-query": "^1.8.4",
-		"@orpc/client": "^1.8.4",
 		"@tanstack/react-query": "^5.85.5",
 		"better-auth": "^1.3.7"
+	},
+	"peerDependencies": {
+		"@orpc/client": "^1.8.5",
+		"@orpc/contract": "^1.8.5",
+		"@orpc/server": "^1.8.5",
+		"@orpc/tanstack-query": "^1.8.5"
 	},
 	"devDependencies": {
 		"@tailwindcss/postcss": "^4.1.10",

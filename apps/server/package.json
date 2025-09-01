@@ -14,6 +14,7 @@
 		"db:migrate": "drizzle-kit migrate"
 	},
 	"dependencies": {
+		"@awesome-app/orpc-contract": "workspace:*",
 		"dotenv": "^17.2.1",
 		"zod": "^4.0.2",
 		"@orpc/server": "^1.8.4",

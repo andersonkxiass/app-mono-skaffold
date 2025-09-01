@@ -8,8 +8,8 @@ import { SignUp } from "@/components/sign-up";
 import { queryClient, orpc } from "@/utils/orpc";
 
 export default function Home() {
-	const healthCheck = useQuery(orpc.healthCheck.queryOptions());
-	const privateData = useQuery(orpc.privateData.queryOptions());
+	const healthCheck = useQuery(orpc.public.greeting.queryOptions({ input: { name: "Native" } }));
+	const privateData = useQuery(orpc.private.greeting.queryOptions({ input: { name: "Native" } }));
 	const { data: session } = authClient.useSession();
 
 	return (
@@ -53,9 +53,7 @@ export default function Home() {
 							<Text className="text-muted-foreground">
 								{healthCheck.isLoading
 									? "Checking..."
-									: healthCheck.data
-										? "Connected to API"
-										: "API Disconnected"}
+									: healthCheck.data?.text}
 							</Text>
 						</View>
 					</View>
@@ -66,7 +64,7 @@ export default function Home() {
 						{privateData && (
 							<View>
 								<Text className="text-muted-foreground">
-									{privateData.data?.message}
+									{privateData.data?.text}
 								</Text>
 							</View>
 						)}
