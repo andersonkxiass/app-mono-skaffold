@@ -12,8 +12,9 @@
 		"plugins": ["expo-router", "expo-secure-store", "expo-web-browser"],
 		"experiments": {
 			"typedRoutes": true,
-			"tsconfigPaths": true
-		},
+			"tsconfigPaths": true,
+            "autolinkingModuleResolution": true
+        },
 		"newArchEnabled": true,
 		"orientation": "portrait",
 		"icon": "./assets/icon.png",

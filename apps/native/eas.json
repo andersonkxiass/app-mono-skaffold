@@ -1,0 +1,33 @@
+{
+  "cli": {
+    "version": ">= 5.9.3",
+    "appVersionSource": "remote"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "node": "22.13.0"
+    },
+    "preview": {
+      "env": {
+        "SENTRY_DISABLE_AUTO_UPLOAD": "true"
+      },
+      "distribution": "internal",
+      "node": "22.13.0"
+    },
+    "production": {
+      "env": {
+        "SENTRY_DISABLE_AUTO_UPLOAD": "true"
+      },
+      "ios": {
+        "autoIncrement": true,
+        "resourceClass": "m1-medium"
+      },
+      "node": "22.13.0"
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}
