@@ -13,8 +13,8 @@ COPY . .
 # Install dependencies
 RUN pnpm install --frozen-lockfile
 
-# Build shared package first (required by server)
-RUN pnpm --filter @carmatch/shared build
+# Build contracts package first (required by server)
+RUN pnpm --filter @awesome-app/contracts build
 
 # Build the server application
 RUN pnpm --filter server build
@@ -36,14 +36,14 @@ COPY --from=builder /usr/src/app/.npmrc ./
 
 # Copy package.json files for workspace resolution
 COPY --from=builder /usr/src/app/apps/server/package.json ./apps/server/
-COPY --from=builder /usr/src/app/packages/shared/package.json ./packages/shared/
+COPY --from=builder /usr/src/app/packages/contracts/package.json ./packages/contracts/
 
 # Copy built server application
 COPY --from=builder /usr/src/app/apps/server/dist ./apps/server/dist
 
-# Copy built shared package
-COPY --from=builder /usr/src/app/packages/shared/dist ./packages/shared/dist
-COPY --from=builder /usr/src/app/packages/shared/package.json ./packages/shared/
+# Copy built contracts package
+COPY --from=builder /usr/src/app/packages/contracts/dist ./packages/contracts/dist
+COPY --from=builder /usr/src/app/packages/contracts/package.json ./packages/contracts/
 
 # Install only production dependencies
 RUN pnpm install --prod --frozen-lockfile
